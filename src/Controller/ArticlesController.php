@@ -10,7 +10,6 @@ use App\Controller\AppController;
  */
 class ArticlesController extends AppController
 {
-
     /**
      * Index method
      *
@@ -43,21 +42,25 @@ class ArticlesController extends AppController
      *
      * @return void Redirects on successful add, renders view otherwise.
      */
-    public function add()
-    {
-        $article = $this->Articles->newEntity();
-        if ($this->request->is('post')) {
-            $article = $this->Articles->patchEntity($article, $this->request->data);
-            if ($this->Articles->save($article)) {
-                $this->Flash->success(__('The article has been saved.'));
-                return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error(__('The article could not be saved. Please, try again.'));
-            }
+
+public function add()
+{
+    $article = $this->Articles->newEntity();
+    if ($this->request->is('post')) {
+        $article = $this->Articles->patchEntity($article, $this->request->data);
+        // Added this line
+        $article->username = $this->Auth->user('username');
+        // You could also do the following
+        $newData = ['username' => $this->Auth->user('username')];
+        $article = $this->Articles->patchEntity($article, $newData);
+        if ($this->Articles->save($article)) {
+            $this->Flash->success(__('Your article has been saved.'));
+            return $this->redirect(['action' => 'index']);
         }
-        $this->set(compact('article'));
-        $this->set('_serialize', ['article']);
+        $this->Flash->error(__('Unable to add your article.'));
     }
+    $this->set('article', $article);
+}
 
     /**
      * Edit method
@@ -101,5 +104,21 @@ class ArticlesController extends AppController
             $this->Flash->error(__('The article could not be deleted. Please, try again.'));
         }
         return $this->redirect(['action' => 'index']);
+    }
+
+    public function isAuthorized($user)
+    {
+        if (in_array($this->request->action, ['add', 'view'])) {
+            return true;
+        }
+
+        if (in_array($this->request->action, ['edit', 'delete'])) {
+            $articleId = (int)$this->request->params['pass'][0];
+            if ($this->Articles->isOwnedBy($articleId, $user['id'])) {
+                return true;
+            }
+        }
+
+        return parent::isAuthorized($user);
     }
 }

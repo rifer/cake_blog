@@ -1,0 +1,20 @@
+{
+  "name": "front_stack",
+  "version": "0.0.0",
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "backbone": "~1.2.3",
+    "bootstrap": "~3.3.5",
+    "handlebars": "~4.0.2"
+  }
+}
