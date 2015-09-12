@@ -1,0 +1,12 @@
+[submodule "Plugin/Froala"]
+	path = Plugin/Froala
+	url = git://github.com/froala/wysiwyg-cake.git
+[submodule "plugins/Plugin/Froala"]
+	path = plugins/Plugin/Froala
+	url = git://github.com/froala/wysiwyg-cake.git
+[submodule "plugins/Froala"]
+	path = plugins/Froala
+	url = git://github.com/froala/wysiwyg-cake.git
+[submodule "Froala"]
+	path = Froala
+	url = git://github.com/froala/wysiwyg-cake.git

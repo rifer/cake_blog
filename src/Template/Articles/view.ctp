@@ -1,4 +1,5 @@
-<div class="actions columns large-2 medium-3">
+
+<div class="actions columns large-2 medium-3 <?php if (!$this->request->session()->read('Auth.User.id')){echo ('hide');} ?>">
     <h3><?= __('Actions') ?></h3>
     <ul class="side-nav">
         <li><?= $this->Html->link(__('Edit Article'), ['action' => 'edit', $article->id]) ?> </li>
@@ -7,27 +8,16 @@
         <li><?= $this->Html->link(__('New Article'), ['action' => 'add']) ?> </li>
     </ul>
 </div>
-<div class="articles view large-10 medium-9 columns">
+<div class="articles view large-10 medium-9 columns <?php if (!$this->request->session()->read('Auth.User.id')){echo ('large-12 medium-12');} ?>">
     <h2><?= h($article->title) ?></h2>
+    <p class="align-right"><?= __('By') ?>  <?= h($article->author) ?> || <i><?= __('Created') ?> <?= h($article->created) ?></i></p>
     <div class="row">
-        <div class="large-5 columns strings">
-            <h6 class="subheader"><?= __('Title') ?></h6>
-            <p><?= h($article->title) ?></p>
-        </div>
-        <div class="large-2 columns numbers end">
-            <h6 class="subheader"><?= __('Id') ?></h6>
-            <p><?= $this->Number->format($article->id) ?></p>
-        </div>
-        <div class="large-2 columns dates end">
-            <h6 class="subheader"><?= __('Created') ?></h6>
-            <p><?= h($article->created) ?></p>
-            <h6 class="subheader"><?= __('Modified') ?></h6>
-            <p><?= h($article->modified) ?></p>
+        <div class="large-8 columns <?php if (!$this->request->session()->read('Auth.User.id')){echo ('large-10');} ?>">
+            <p><?= h($article->lead) ?></p>
         </div>
     </div>
     <div class="row texts">
-        <div class="columns large-9">
-            <h6 class="subheader"><?= __('Body') ?></h6>
+        <div class="columns large-9 <?php if (!$this->request->session()->read('Auth.User.id')){echo ('large-10');} ?>">
             <?= $this->Text->autoParagraph(h($article->body)) ?>
         </div>
     </div>

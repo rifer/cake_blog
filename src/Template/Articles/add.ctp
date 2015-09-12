@@ -5,12 +5,20 @@
     </ul>
 </div>
 <div class="articles form large-10 medium-9 columns">
-    <?= $this->Form->create($article) ?>
+    <?= $this->Form->create($article, ['enctype' => 'multipart/form-data']) ?>
     <fieldset>
         <legend><?= __('Add Article') ?></legend>
         <?php
             echo $this->Form->input('title');
+            echo $this->Form->input('category');
+            echo $this->Form->input('lead',
+                array('label' => 'Resume' )
+            );
             echo $this->Form->input('body');
+            echo $this->Form->input('url_image', [
+                'type' => 'file',
+                'label' => 'Top Image'
+            ]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

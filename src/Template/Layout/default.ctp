@@ -26,8 +26,11 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     </title>
     <?= $this->Html->meta('icon') ?>
 
-    <?= $this->Html->css('cake.css') ?>
-    <?= $this->Html->css('blog_theme.css') ?>
+
+<!-- <?= $this->Html->css('//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css') ?>
+     <?= $this->Html->css('//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css') ?> -->
+     <?= $this->Html->css('blog_theme.css') ?>   
+
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
@@ -35,16 +38,23 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 </head>
 <body>
     <header class="home">
-        <div class="header-title">
-            <span><?= $this->fetch('title') ?></span>
-        </div>
-        <div class="header-help">
-            <span><a target="_blank" href="http://book.cakephp.org/3.0/">Documentation</a></span>
-            <span><a target="_blank" href="http://api.cakephp.org/3.0/">API</a></span>
+        <div class="row">
+            <div class="header-title">
+                <span><?= $this->fetch('title') ?></span>
+            </div>
+            <div class="header-help">
+    <?php if ($this->request->session()->read('Auth.User.username')) : ?>
+        <span> You are Logged in As .<?= $this->request->session()->read('Auth.User.username') ?> </span>
+        <span><?= $this->Html->link(__('Log out'), ['controller' => 'Users', 'action' => 'logout']) ?></span>
+    <?php endif ?>
+    <?php if (!$this->request->session()->read('Auth.User.username')) : ?>
+        <span><?= $this->Html->link(__('Login'), ['controller' => 'Users', 'action' => 'login']) ?></span>
+    <?php endif ?>
+
+            </div>
         </div>
     </header>
-    <div id="container">
-
+    <main id="container">
         <div id="content">
             <?= $this->Flash->render() ?>
 
@@ -52,8 +62,11 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                 <?= $this->fetch('content') ?>
             </div>
         </div>
-        <footer>
-        </footer>
-    </div>
+    </main>
+    <footer>
+            <?= $this->element('footer') ?>
+    </footer>
+    <?= $this->Html->script('fonts.js') ?>
+    <?= $this->Html->script('//code.jquery.com/jquery-git2.min.js') ?>    
 </body>
 </html>
