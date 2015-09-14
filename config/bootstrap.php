@@ -180,7 +180,11 @@ Request::addDetector('tablet', function ($request) {
  *
  */
 
-Plugin::loadAll();
+/*Plugin::load('WyriHaximus/TwigView', [
+    'bootstrap' => true,
+]);*/
+Plugin::load('Search');
+Plugin::load('SocialShare');
 
 // Only try to load DebugKit in development mode
 // Debug Kit should not be installed on a production system

@@ -29,10 +29,8 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 
 <!-- <?= $this->Html->css('//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css') ?>
      <?= $this->Html->css('//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css') ?> -->
-     <?= $this->Html->css('//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css') ?>
      <?= $this->Html->css('blog_theme.css') ?>   
 
-    <?= $this->Html->script('fonts.js') ?>
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
@@ -45,26 +43,29 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                 <span><?= $this->fetch('title') ?></span>
             </div>
             <div class="header-help">
-                <?php if ($this->request->session()->read('Auth.User.username')) : ?>
-                    <span> You are Logged in As .<?= $this->request->session()->read('Auth.User.username') ?> </span>
-                    <span><?= $this->Html->link(__('Log out'), ['controller' => 'Users', 'action' => 'logout']) ?></span>
-                <?php endif ?>
-                <?php if (!$this->request->session()->read('Auth.User.username')) : ?>
-                    <span><?= $this->Html->link(__('Login'), ['controller' => 'Users', 'action' => 'login']) ?></span>
-                <?php endif ?>
+    <?php if ($this->request->session()->read('Auth.User.username')) : ?>
+        <span> You are Logged in As .<?= $this->request->session()->read('Auth.User.username') ?> </span>
+        <span><?= $this->Html->link(__('Log out'), ['controller' => 'Users', 'action' => 'logout']) ?></span>
+    <?php endif ?>
+    <?php if (!$this->request->session()->read('Auth.User.username')) : ?>
+        <span><?= $this->Html->link(__('Login'), ['controller' => 'Users', 'action' => 'login']) ?></span>
+    <?php endif ?>
+
             </div>
         </div>
     </header>
     <main id="container">
+        <div id="content">
             <?= $this->Flash->render() ?>
             <div class="row">
                 <?= $this->fetch('content') ?>
             </div>
+        </div>
     </main>
     <footer>
             <?= $this->element('footer') ?>
     </footer>
+    <?= $this->Html->script('fonts.js') ?>
     <?= $this->Html->script('//code.jquery.com/jquery-git2.min.js') ?>    
-    <?= $this->Html->script('front.js') ?>
 </body>
 </html>

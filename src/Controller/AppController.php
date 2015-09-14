@@ -28,6 +28,8 @@ use Cake\Event\Event;
 class AppController extends Controller
 {
 
+/*    public $viewClass = '\WyriHaximus\TwigView\View\TwigView';
+*/    
     /**
      * Initialization hook method.
      *
@@ -46,10 +48,12 @@ class AppController extends Controller
             ],
             'logoutRedirect' => [
                 'controller' => 'Pages',
-                'action' => 'display',
-                'home'
+                'action' => 'index'
             ]
         ]);
+        if ($this->request->action === 'index') {
+            $this->loadComponent('Search.Prg');
+        }
     }
 
     public function isAuthorized($user)
@@ -59,8 +63,10 @@ class AppController extends Controller
         }
         return false;
     }
+    
     public function beforeFilter(Event $event)
     {
         $this->Auth->allow(['index', 'display', 'view']);
     }
+    
 }

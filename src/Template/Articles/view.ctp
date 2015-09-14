@@ -1,4 +1,3 @@
-
 <div class="actions columns large-2 medium-3 <?php if (!$this->request->session()->read('Auth.User.id')){echo ('hide');} ?>">
     <h3><?= __('Actions') ?></h3>
     <ul class="side-nav">
@@ -20,5 +19,25 @@
         <div class="columns large-9 <?php if (!$this->request->session()->read('Auth.User.id')){echo ('large-10');} ?>">
             <?= $this->Text->autoParagraph(h($article->body)) ?>
         </div>
+    </div>
+    <div class="row share">
+        <?php
+           $services = [
+            'facebook' => __('Share on Facebook'),
+            'gplus' => __('Share on Google+'),
+            'linkedin' => __('Share on LinkedIn'),
+            'twitter' => __('Share on Twitter'),
+            'whatsapp' => __('Share on Whatsapp'),
+            'pocket' => __('Save on Pocket')
+        ];
+            echo '<ul>';
+            foreach ($services as $service => $linkText) {
+                echo '<li>' . $this->SocialShare->fa(
+                    $service,
+                    $linkText
+                ) . '</li>';
+            }
+            echo '</ul>';
+        ?>
     </div>
 </div>
