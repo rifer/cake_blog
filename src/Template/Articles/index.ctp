@@ -1,15 +1,19 @@
 <?= $this->element('search') ?>
 <?php if ($this->request->session()->read('Auth.User.id')) : ?>
-<div class="actions columns large-2 medium-3">
-    <h3><?= __('Actions') ?></h3>
-    <ul class="side-nav">
-        <li><?= $this->Html->link(__('New Article'), ['action' => 'add']) ?></li>
-    </ul>
-</div>
+    <aside class="actions columns large-3 small-12">
+        <h3><?= __('Actions') ?></h3>
+        <ul class="side-nav">
+            <li><?= $this->Html->link(__('New Article'), ['action' => 'add']) ?></li>
+        </ul>
+    </aside>
 <?php endif ?>
-
-<div class="articles index large-10 medium-9 columns <?php if (!$this->request->session()->read('Auth.User.id')){echo ('large-12 medium-12');} ?>">
+<section class="grid">
+    <div class="grid-sizer"></div>
+<!--     <?php foreach ($articles as $category): ?>
+        <span><?= h($category->category) ?></span>
+    <?php endforeach;?> -->
     <?php foreach ($articles as $article): ?>
+        <article class="grid-item">
             <h2><?= $this->Html->link(h($article->title),['action' => 'view', $article->id])  ?></h2>        
             <?php if ($this->request->session()->read('Auth.User.id')) : ?>
                 <span class="actions">
@@ -21,7 +25,21 @@
             <p><?= h($article->lead) ?></p>
             <?= $this->Html->link(__('Read more'), ['action' => 'view', $article->id]) ?>
             <p><?= __('At') ?> <?= h($article->modified) ?> <?= __('by') ?> <?= h($article->author) ?></p>
+        </article>
     <?php endforeach; ?>
+</section>
+<script type="text/javascript">
+    $(document).ready( function() {
+
+      $('.grid').masonry({
+        itemSelector: '.grid-item',
+        columnWidth: '.grid-sizer',
+        percentPosition: true
+      });
+      
+    });
+</script>
+<div class="articles index large-8 medium-7 columns">
     <div class="paginator">
         <ul class="pagination">
             <?= $this->Paginator->prev('< ' . __('previous')) ?>

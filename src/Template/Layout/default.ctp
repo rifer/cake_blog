@@ -33,6 +33,8 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
      <?= $this->Html->css('blog_theme.css') ?>   
 
     <?= $this->Html->script('fonts.js') ?>
+    <?= $this->Html->script('//code.jquery.com/jquery-git2.min.js') ?> 
+    <?= $this->Html->script('//cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.min.js') ?>
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
@@ -63,8 +65,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     </main>
     <footer>
             <?= $this->element('footer') ?>
-    </footer>
-    <?= $this->Html->script('//code.jquery.com/jquery-git2.min.js') ?>    
+    </footer>   
     <?= $this->Html->script('front.js') ?>
 </body>
 </html>
