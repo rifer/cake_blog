@@ -41,31 +41,33 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->fetch('script') ?>
 </head>
 <body>
-    <header class="home">
-        <div class="row">
-            <div class="header-title">
-                <span><?= $this->fetch('title') ?></span>
-            </div>
-            <div class="header-help">
-                <?php if ($this->request->session()->read('Auth.User.username')) : ?>
-                    <span> You are Logged in As .<?= $this->request->session()->read('Auth.User.username') ?> </span>
-                    <span><?= $this->Html->link(__('Log out'), ['controller' => 'Users', 'action' => 'logout']) ?></span>
-                <?php endif ?>
-                <?php if (!$this->request->session()->read('Auth.User.username')) : ?>
-                    <span><?= $this->Html->link(__('Login'), ['controller' => 'Users', 'action' => 'login']) ?></span>
-                <?php endif ?>
-            </div>
-        </div>
-    </header>
-    <main id="container">
-            <?= $this->Flash->render() ?>
+    <div class="wrapper">
+        <header class="home">
             <div class="row">
-                <?= $this->fetch('content') ?>
+                <div class="header-title">
+                    <span><?= $this->fetch('title') ?></span>
+                </div>
+                <div class="header-help">
+                    <?php if ($this->request->session()->read('Auth.User.username')) : ?>
+                        <span> You are Logged in As .<?= $this->request->session()->read('Auth.User.username') ?> </span>
+                        <span><?= $this->Html->link(__('Log out'), ['controller' => 'Users', 'action' => 'logout']) ?></span>
+                    <?php endif ?>
+                    <?php if (!$this->request->session()->read('Auth.User.username')) : ?>
+                        <span><?= $this->Html->link(__('Login'), ['controller' => 'Users', 'action' => 'login']) ?></span>
+                    <?php endif ?>
+                </div>
             </div>
-    </main>
-    <footer>
-            <?= $this->element('footer') ?>
-    </footer>   
+        </header>
+        <main id="container">
+                <?= $this->Flash->render() ?>
+                <div class="row">
+                    <?= $this->fetch('content') ?>
+                </div>
+        </main>
+        <footer>
+                <?= $this->element('footer') ?>
+        </footer> 
+    </div> 
     <?= $this->Html->script('front.js') ?>
 </body>
 </html>

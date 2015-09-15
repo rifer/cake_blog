@@ -16,7 +16,12 @@
         <legend><?= __('Edit Article') ?></legend>
         <?php
             echo $this->Form->input('title');
+            echo $this->Form->input('category');
+            echo $this->Form->input('lead',
+                array('label' => 'Resume' )
+            );
             echo $this->Form->input('body');
+            echo $this->Form->input('photo', ['type' => 'file']);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

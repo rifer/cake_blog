@@ -15,10 +15,7 @@
                 array('label' => 'Resume' )
             );
             echo $this->Form->input('body');
-            echo $this->Form->input('url_image', [
-                'type' => 'file',
-                'label' => 'Top Image'
-            ]);
+            echo $this->Form->input('photo', ['type' => 'file']);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

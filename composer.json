@@ -12,7 +12,9 @@
         "cakephp/plugin-installer": "*",
         "wyrihaximus/twig-view": "dev-master",
         "friendsofcake/search": "dev-master",
-        "drmonkeyninja/cakephp-social-share": "3.0.*"
+        "drmonkeyninja/cakephp-social-share": "3.0.*",
+        "davidyell/proffer": "~0.4",
+        "admad/cakephp-i18n": "1.0.x-dev"
     },
     "require-dev": {
         "psy/psysh": "@stable",

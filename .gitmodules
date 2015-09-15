@@ -10,3 +10,6 @@
 [submodule "Froala"]
 	path = Froala
 	url = git://github.com/froala/wysiwyg-cake.git
+[submodule "plugins/Cml/cake-markup-language"]
+	path = plugins/Cml/cake-markup-language
+	url = git@github.com:jameswatts/cake-markup-language.git

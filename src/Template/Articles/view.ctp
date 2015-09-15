@@ -1,3 +1,4 @@
+<?= $this->assign( 'title', h($article->title)) ?>
 <div class="actions columns large-2 medium-3 <?php if (!$this->request->session()->read('Auth.User.id')){echo ('hide');} ?>">
     <h3><?= __('Actions') ?></h3>
     <ul class="side-nav">
@@ -9,7 +10,12 @@
 </div>
 <div class="articles view large-10 medium-9 columns <?php if (!$this->request->session()->read('Auth.User.id')){echo ('large-12 medium-12');} ?>">
     <h2><?= h($article->title) ?></h2>
-    <p class="align-right"><?= __('By') ?>  <?= h($article->author) ?> || <i><?= __('Created') ?> <?= h($article->created) ?></i></p>
+    <p class="date"><?= __('By') ?>  <?= h($article->author) ?> || <i><?= __('Created') ?> <?= h($article->created) ?></i></p>
+                <?php if(h($article->photo)): ?>
+                <figure class="general">
+                    <?= $this->Html->image('../files/articles/photo/' . $article->get('photo_dir') . '/long_' . $article->get('photo'), array('alt' => h($article->title))) ?>
+                </figure>
+            <?php endif ?>
     <div class="row">
         <div class="large-8 columns <?php if (!$this->request->session()->read('Auth.User.id')){echo ('large-10');} ?>">
             <p><?= h($article->lead) ?></p>

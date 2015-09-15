@@ -31,6 +31,18 @@ class ArticlesTable extends Table
 
         $this->addBehavior('Timestamp');
         $this->addBehavior('Search.Search');
+        $this->addBehavior('Proffer.Proffer', [
+            'photo' => [    // The name of your upload field
+                'root' => WWW_ROOT . 'files', // Customise the root upload folder here, or omit to use the default
+                'dir' => 'photo_dir',   // The name of the field to store the folder
+                'thumbnailSizes' => [ // Declare your thumbnails
+                    'square' => ['w' => 200, 'h' => 200],   // Define the size and prefix of your thumbnails
+                    'portrait' => ['w' => 400, 'h' => 100, 'crop' => true],     // Crop will crop the image as well as resize it
+                    'long' => ['w' => 400, 'h' => 200],
+                ],
+                'thumbnailMethod' => 'gd'  // Options are Imagick, Gd or Gmagick
+            ]
+        ]);
 
     }
 
@@ -45,12 +57,6 @@ class ArticlesTable extends Table
         $validator
             ->add('id', 'valid', ['rule' => 'numeric'])
             ->allowEmpty('id', 'create');
-
-        $validator
-            ->allowEmpty('title');
-
-        $validator
-            ->allowEmpty('body');
 
         return $validator;
     }

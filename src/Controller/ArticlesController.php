@@ -20,22 +20,21 @@ class ArticlesController extends AppController
      */
     public function index()
     {
-        $settings = [
-            'Articles' => [
-                'finder' => 'custom',
-                'sortWhitelist' => ['title', 'author', 'lead'],
-                'limit' => '4',
-                'maxLimit' => '8'
-            ]
-        ];
-
+        $firstArticle = $this->Articles
+        ->find()
+        ->first();
         $query = $this->Articles
-        ->find('search', $this->Articles->filterParams($this->request->query))
-        ->order(['Articles.id' => 'asc']);
+        ->find('search', $this->Articles->filterParams($this->request->query));
         $this->set('_serialize', ['articles']);
-        $this->set('articles', $this->paginate($query, $settings));
+        $this->set('articles', $this->paginate($query));
     }
-
+    public $components = ['Paginator'];
+    public $paginate = [
+        'limit' => 8,
+        'order' => [
+            'Articles.modified' => 'DESC'
+        ]
+    ];
     /**
      * View method
      *
@@ -77,16 +76,6 @@ public function add()
     }
     $this->set('article', $article);
 }
-/**
- * uploads files to the server
- * @params:
- *      $folder     = the folder to upload the files e.g. 'img/files'
- *      $formdata   = the array containing the form files
- *      $itemId     = id of the item (optional) will create a new sub folder
- * @return:
- *      will return an array with the success of each file upload
- */
-
 
     /**
      * Edit method

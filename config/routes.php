@@ -54,6 +54,18 @@ Router::scope('/', function ($routes) {
      */
     $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
 
+/*    $routes->connect(
+        '/:controller',
+        ['action' => 'index'],
+        ['routeClass' => 'ADmad/I18n.I18nRoute']
+    );
+    $routes->connect(
+        '/:controller/:action/*',
+        ['controller' => 'Pages', 'action' => 'display'],
+        ['routeClass' => 'ADmad/I18n.I18nRoute']
+    );*/
+
+
     /**
      * Connect catchall routes for all controllers.
      *
