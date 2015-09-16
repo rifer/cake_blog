@@ -51,6 +51,7 @@ class AppController extends Controller
                 'action' => 'index'
             ]
         ]);
+        $this->loadComponent('Cml.parser');
         if ($this->request->action === 'index') {
             $this->loadComponent('Search.Prg');
         }

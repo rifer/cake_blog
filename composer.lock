@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1e68b25a63c4e3c2a0ac0438751701a1",
-    "content-hash": "bacf991dc342a5912a1adfb33c5b8e4a",
+    "hash": "da22815ea111e3512b30188ad022efa8",
+    "content-hash": "0ebc63c9e24bb0d047c188d232fbc914",
     "packages": [
         {
             "name": "admad/cakephp-i18n",
@@ -394,6 +394,101 @@
             "time": "2015-06-10 10:35:13"
         },
         {
+            "name": "composer/installers",
+            "version": "v1.0.21",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/composer/installers.git",
+                "reference": "d64e23fce42a4063d63262b19b8e7c0f3b5e4c45"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/composer/installers/zipball/d64e23fce42a4063d63262b19b8e7c0f3b5e4c45",
+                "reference": "d64e23fce42a4063d63262b19b8e7c0f3b5e4c45",
+                "shasum": ""
+            },
+            "replace": {
+                "roundcube/plugin-installer": "*",
+                "shama/baton": "*"
+            },
+            "require-dev": {
+                "composer/composer": "1.0.*@dev",
+                "phpunit/phpunit": "4.1.*"
+            },
+            "type": "composer-installer",
+            "extra": {
+                "class": "Composer\\Installers\\Installer",
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Composer\\Installers\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kyle Robinson Young",
+                    "email": "kyle@dontkry.com",
+                    "homepage": "https://github.com/shama"
+                }
+            ],
+            "description": "A multi-framework Composer library installer",
+            "homepage": "http://composer.github.com/installers/",
+            "keywords": [
+                "Craft",
+                "Dolibarr",
+                "Hurad",
+                "MODX Evo",
+                "OXID",
+                "SMF",
+                "Thelia",
+                "WolfCMS",
+                "agl",
+                "aimeos",
+                "annotatecms",
+                "bitrix",
+                "cakephp",
+                "chef",
+                "codeigniter",
+                "concrete5",
+                "croogo",
+                "dokuwiki",
+                "drupal",
+                "elgg",
+                "fuelphp",
+                "grav",
+                "installer",
+                "joomla",
+                "kohana",
+                "laravel",
+                "lithium",
+                "magento",
+                "mako",
+                "mediawiki",
+                "modulework",
+                "moodle",
+                "phpbb",
+                "piwik",
+                "ppi",
+                "puppet",
+                "roundcube",
+                "shopware",
+                "silverstripe",
+                "symfony",
+                "typo3",
+                "wordpress",
+                "zend",
+                "zikula"
+            ],
+            "time": "2015-02-18 17:17:01"
+        },
+        {
             "name": "davidyell/proffer",
             "version": "0.5.0",
             "source": {
@@ -771,6 +866,57 @@
                 "psr-3"
             ],
             "time": "2012-12-21 11:40:51"
+        },
+        {
+            "name": "rifer/test-update-cml",
+            "version": "dev-beta",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rifer/cake-markup-language.git",
+                "reference": "50b46488b0011c033c61681bea6b89d27ee0dc89"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rifer/cake-markup-language/zipball/50b46488b0011c033c61681bea6b89d27ee0dc89",
+                "reference": "50b46488b0011c033c61681bea6b89d27ee0dc89",
+                "shasum": ""
+            },
+            "require": {
+                "composer/installers": "*",
+                "php": ">=5.3.0"
+            },
+            "type": "cakephp-plugin",
+            "extra": {
+                "installer-name": "Cml"
+            },
+            "autoload": {
+                "psr-4": {
+                    "Cml\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "CakePHP Community",
+                    "homepage": "https://github.com/jameswatts/cake-markup-language/graphs/contributors"
+                },
+                {
+                    "name": "Rodrigo Iglesias",
+                    "role": "contributor"
+                }
+            ],
+            "description": "CakePHP plugin providing further abstraction of the View layer by replacing the procedural PHP code with an XML based markup",
+            "homepage": "https://github.com/rifer/cake-markup-language",
+            "keywords": [
+                "cake",
+                "cakephp",
+                "language",
+                "markup"
+            ],
+            "time": "2015-09-16 07:44:09"
         },
         {
             "name": "robmorgan/phinx",
@@ -1618,6 +1764,7 @@
         "wyrihaximus/twig-view": 20,
         "friendsofcake/search": 20,
         "admad/cakephp-i18n": 20,
+        "rifer/test-update-cml": 20,
         "psy/psysh": 0
     },
     "prefer-stable": true,

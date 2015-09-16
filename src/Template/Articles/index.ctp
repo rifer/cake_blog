@@ -1,28 +1,18 @@
 <?= $this->element('search') ?>
-    <aside class="actions columns large-3 small-12">
-        <?php if ($this->request->session()->read('Auth.User.id')) : ?>
-            <h3><?= __('Actions') ?></h3>
-            <ul class="side-nav">
-                <li><?= $this->Html->link(__('New Article'), ['action' => 'add']) ?></li>
-            </ul>
-        <?php endif ?>
-        <h3>HI</h3>
-        <p class="intro">Interestingly no JSLint loader seems to exist for Webpack yet. Fortunately, there's one for JSHint. On a legacy project setting it up with Webpack is easy. You will need to install jshint-loader to your project (npm i jshint-loader --save-dev). In addition, you will need a little bit of configuration.</p>
-        <ul class="contact">
-            <li><a href="#"><i class="fa fa-twitter"></i> @rifertwit</a></li>
-            <li><a href="#"><i class="fa fa-linkedin"></i> @riferface</a></li>
-            <li><a href="#"><i class="fa fa-github"></i> @rifer</a></li>
-        </ul>
-    </aside>
-
 <section class="grid">
     <div class="grid-sizer"></div>
 <!--     <?php foreach ($articles as $category): ?>
         <span><?= h($category->category) ?></span>
     <?php endforeach;?> -->
+
+    <h1><cake:out value="Hello World" /></h1>
+    
         <?php $featuredArticle = $articles->first(); ?>
          <article class="grid-item grid-item--width2">
             <h2><?= $this->Html->link(h($featuredArticle->title),['action' => 'view', $featuredArticle->id])  ?></h2>
+
+            <h2><cake:link url="['action' => 'view']" value="%{featuredArticle.title}" /></h2>
+            
             <p class="date"><?= __('At') ?> <?= h($featuredArticle->modified) ?> <?= __('by') ?> <?= h($featuredArticle->author) ?></p>        
             <?php if ($this->request->session()->read('Auth.User.id')) : ?>
                 <span class="actions">
@@ -31,8 +21,8 @@
                 </span>
             <?php endif ?>
             <?php if(h($featuredArticle->photo)): ?>
-                <figure class="general">
-                    <?= $this->Html->image('../files/articles/photo/' . $featuredArticle->get('photo_dir') . '/long_' . $featuredArticle->get('photo'), array('alt' => h($featuredArticle->title))) ?>
+                <figure class="featured">
+                    <?= $this->Html->image('../files/articles/photo/' . $featuredArticle->get('photo_dir') . '/featured_' . $featuredArticle->get('photo'), array('alt' => h($featuredArticle->title))) ?>
                 </figure>
             <?php endif ?>
             <p class="lead"><?= h($featuredArticle->lead) ?></p>
@@ -41,6 +31,13 @@
             <?php endif ?>
             <p class="read-more"><?= $this->Html->link(__('Read more'), ['action' => 'view', $featuredArticle->id]) ?></p>
         </article>
+
+
+    <php:foreach var="articles" value="article">
+        <cake:out value="%{article.title}" />
+    </php:foreach>
+    
+
     <?php foreach ($articles as $article): ?>
         <?php if ($article != $featuredArticle): ?>
         <article class="grid-item">
@@ -87,3 +84,18 @@
         <p><?= $this->Paginator->counter() ?></p>
     </div>
 </div>
+<aside class="actions columns large-3 small-12">
+    <?php if ($this->request->session()->read('Auth.User.id')) : ?>
+        <h3><?= __('Actions') ?></h3>
+        <ul class="side-nav">
+            <li><?= $this->Html->link(__('New Article'), ['action' => 'add']) ?></li>
+        </ul>
+    <?php endif ?>
+    <h3>HI</h3>
+    <p class="intro">Interestingly no JSLint loader seems to exist for Webpack yet. Fortunately, there's one for JSHint. On a legacy project setting it up with Webpack is easy. You will need to install jshint-loader to your project (npm i jshint-loader --save-dev). In addition, you will need a little bit of configuration.</p>
+    <ul class="contact">
+        <li><a href="#"><i class="fa fa-twitter"></i> @rifertwit</a></li>
+        <li><a href="#"><i class="fa fa-linkedin"></i> @riferface</a></li>
+        <li><a href="#"><i class="fa fa-github"></i> @rifer</a></li>
+    </ul>
+</aside>

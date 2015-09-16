@@ -39,6 +39,7 @@ class ArticlesTable extends Table
                     'square' => ['w' => 200, 'h' => 200],   // Define the size and prefix of your thumbnails
                     'portrait' => ['w' => 400, 'h' => 100, 'crop' => true],     // Crop will crop the image as well as resize it
                     'long' => ['w' => 400, 'h' => 200],
+                    'featured' => ['w' => 700, 'h' => 400],
                 ],
                 'thumbnailMethod' => 'gd'  // Options are Imagick, Gd or Gmagick
             ]

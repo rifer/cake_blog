@@ -187,6 +187,7 @@ Plugin::load('Search');
 Plugin::load('SocialShare');
 Plugin::load('Proffer');
 Plugin::load('ADmad/I18n');
+Plugin::load('Cml', ['autoload' => true]);
 
 /*Plugin::loadAll();*/
 

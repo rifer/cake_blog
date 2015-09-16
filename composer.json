@@ -14,7 +14,8 @@
         "friendsofcake/search": "dev-master",
         "drmonkeyninja/cakephp-social-share": "3.0.*",
         "davidyell/proffer": "~0.4",
-        "admad/cakephp-i18n": "1.0.x-dev"
+        "admad/cakephp-i18n": "1.0.x-dev",
+        "rifer/test-update-cml": "dev-beta"
     },
     "require-dev": {
         "psy/psysh": "@stable",
@@ -27,7 +28,8 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "src"
+            "App\\": "src",
+            "Cml\\": "./plugins/Cml/src"
         }
     },
     "autoload-dev": {
